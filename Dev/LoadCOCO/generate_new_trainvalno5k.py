@@ -4,12 +4,12 @@ import os
 # generate 5k.part - validation or trainvalno5k.part
 
 def generate(path):
+    print ("Start generate trainvalno5k and 5k")
     files = os.listdir(path)
-    print ("Thang")
     if 'val' in path:
-        f = open("./text/my_5k.txt", "w")
+        f = open("./my-person-5k.txt", "w")
     elif 'train' in path:
-        f = open("./text/my_trainvalno5k.txt", "w")
+        f = open("./my-person-trainvalno5k.txt", "w")
     else:
         print("You have to create train and validation dataset")
     for name in sorted(files):
@@ -19,12 +19,11 @@ def generate(path):
 
 def main():
     string = os.getcwd()
-    print (string)
-    originalDir = 'data' # hoac GlobalData
+    originalDir = 'images/'
     fixed_path = string+'/'+originalDir
     folders = os.listdir(fixed_path)
     for folder in folders:
-        generate(fixed_path+'/'+folder)
+        generate(fixed_path+folder)
 
 if __name__=="__main__":
     main()

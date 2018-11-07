@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import os
 import cv2
 import numpy as np
 import json
@@ -11,9 +12,9 @@ class OWN_COCO:
         self.dataset = dict()
         self.newown = dict()
         if not annotationFile == None:
-            print ("Loading dataset")
+            print ("Loading Original "+annotationFile.split("/")[-1])
             self.dataset = json.load(open(annotationFile, 'r'))
-            print ("Done!")
+            print ("=====> Loading Done!")
             for key in self.dataset:
                 if key not in ['categories', 'images', 'annotations']:
                     self.newown[key] = self.dataset[key]
@@ -63,18 +64,20 @@ class OWN_COCO:
         cat_indices = self.chooseCategory(cat_names)
         image_indices = self.chooseAnnotation(cat_indices)
         self.chooseImages(image_indices)
+        print ("---->Start Dumping New Json File")
+        if not os.path.isdir("./annotations"):
+            os.mkdir("./annotations")
         with open('./annotations/' + output_name, 'w') as outfile:
             json.dump(self.newown, outfile, indent=4, sort_keys=True)
+            print ("---->Complete Dumping")
 
 def main(argv):
     assert (len(argv) > 2), "You should parse json file and categories you want to save"
-    originalDataDir = "../GlobalData/COCO-Data/annotations/"
+    originalDataDir = "../../../../Dataset/COCO/annotations/"
     annFile = originalDataDir + argv[1]
     cat_names = argv[2:]
     output_name= argv[1].split('.')[0]+'.json'
-    print (annFile)
-    print (cat_names)
-    print (output_name)
+    print ("We extract samples with label: "+ " ".join(cat_names)+" in " + annFile.split("/")[-1])
     coco = OWN_COCO(annFile)
     coco.create_new_annotation_file_based_on_cat_we_choose(cat_names, output_name)
 

@@ -4,8 +4,8 @@ import sys
 import json
 import shutil
 
-originalDir = '../GlobalData/COCO-Data/'
-destDir = './data/'
+originalDir = "../../../../../Dataset/COCO/"
+destDir = "./"
 def copy_only_image_we_need(annFile):
     dir_copy_from = None
     if annFile.find('train') != -1:
@@ -18,11 +18,11 @@ def copy_only_image_we_need(annFile):
     dataset = json.load(open(annFile, 'r'))
     num_imgs = len(dataset['images'])
     dst = destDir + dir_copy_from
-    print (dst)
-    if os.path.isdir(dst)==False:
+    print("Start copy image from: COCO"+ dir_copy_from)
+    if not os.path.isdir(dst):
         os.mkdir(dst)
     for i, img in enumerate(dataset['images']):
-        if (i%800 == 0 and i !=0) or i==num_imgs-1:
+        if (i%10000 == 0 and i !=0) or i==num_imgs-1:
             print ("=============> Copying Completed "+ str(round(float(i)*100/num_imgs)) +"%")
         src = originalDir + dir_copy_from + "/" + img['file_name']
         shutil.copy(src, dst)
@@ -30,7 +30,6 @@ def copy_only_image_we_need(annFile):
 def main(argv):
     assert (len(argv)==2), "You have to add your annFile"
     annFile = argv[1]
-    print (annFile)
     copy_only_image_we_need(annFile)
 
 if __name__=='__main__':

@@ -16,17 +16,16 @@ def NormalizedBBox(BBox, image_size):
     return BBox
 
 def process(annFile):
+    print ("Start Generate My Labels from " + annFile)
     typeOfFile = ""
     if annFile.find('train') != -1:
-        typeOfFile = annFile[annFile.find('val') : annFile.find('train') + 9]
+        typeOfFile = annFile[annFile.find('train') : annFile.find('train') + 9]
     elif annFile.find('val') != -1:
         typeOfFile = annFile[annFile.find('val') : annFile.find('val') + 7]
     else:
         print ("You should configure your file is train or val?")
         return
-    print ("LOAD annotation file ")
     dataset = json.load(open(annFile,"r"))
-    print ("LOAD DONE")
     images = dict() # map image_id and_image name
     assert ('images' in dataset), "Your file must have images field"
     for image in dataset['images']:
@@ -37,7 +36,9 @@ def process(annFile):
         nml_bbox = NormalizedBBox(ann['bbox'], images[ann['image_id']][1:3])
         cat = str(int(ann['category_id']) - 1)
         image_name = images[ann['image_id']][0]
-        pathToFile = "./labels/" + typeOfFile + "/"+image_name.split('.')[0] + ".txt"
+        pathToFile = "./labels/" + typeOfFile + "/COCO_" + typeOfFile +"_" + image_name.split('.')[0] + ".txt"
+        if not os.path.isdir("./labels"):
+            os.mkdir("./labels")
         if not os.path.isdir("./labels/"+typeOfFile):
             os.mkdir("./labels/"+typeOfFile)
         if os.path.isfile(pathToFile):
@@ -50,7 +51,6 @@ def process(annFile):
 def main(argv):
     assert (len(argv)==2), "You have to add your annFile"
     annFile = argv[1]
-    print (annFile)
     process(originalDir+annFile)
 
 if __name__=='__main__':
