@@ -1,4 +1,4 @@
-#In Dataset:
+# In Dataset:
 ****
 
     You can use commandLine to download image data. For example, in order to download COCO2014:
@@ -13,15 +13,14 @@
 
     But the sizes of these data are really big, I recommend you choose an download manager, and then unzip it
 
-#In Dev:
-****
+# In Dev:
+----
 
     In this project, we will extract from COCO data. You can also do the same thing with VOC data by yourself
-
     But the data should be put in the folder Dataset/
 
-#In Network_model:
-****
+# In Network_model:
+---
 
     We have to reconfig Network if you want to train your own dataset
 
