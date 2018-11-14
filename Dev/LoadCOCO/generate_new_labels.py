@@ -36,7 +36,7 @@ def process(annFile):
         nml_bbox = NormalizedBBox(ann['bbox'], images[ann['image_id']][1:3])
         cat = str(int(ann['category_id']) - 1)
         image_name = images[ann['image_id']][0]
-        pathToFile = "./labels/" + typeOfFile + "/COCO_" + typeOfFile +"_" + image_name.split('.')[0] + ".txt"
+        pathToFile = "./labels/" + typeOfFile + "/" + image_name.split('.')[0] + ".txt"
         if not os.path.isdir("./labels"):
             os.mkdir("./labels")
         if not os.path.isdir("./labels/"+typeOfFile):
