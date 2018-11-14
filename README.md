@@ -1,6 +1,5 @@
 # In Dataset:
 ****
-
     You can use commandLine to download image data. For example, in order to download COCO2014:
 
             wget -c https://pjreddie.com/media/files/train2014.zip
@@ -12,13 +11,11 @@
 
 # In Dev:
 ----
-
     In this project, I extract my own data from COCO data. You can also do the same thing with VOC data by yourself
     But the original data should be put in the folder Dataset/
 
 # In Network_model:
 ----
-
     You have to reconfig Network if you want to train your own dataset
 
     In this project, for example, I add my-person-yolo.cfg (modified from yolo.cfg)
