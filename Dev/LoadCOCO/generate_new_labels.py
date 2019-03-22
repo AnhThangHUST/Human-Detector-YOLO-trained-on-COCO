@@ -9,9 +9,9 @@ destDir = './labels/'
 # BBox la 1 list cua cac toa do chua dc chuan hoa, image_size la 1 list chua width va height
 def NormalizedBBox(BBox, image_size):
     width, height = image_size
-    BBox[0] = str(round(BBox[0]/width, 6))
+    BBox[0] = str(round((2*BBox[0]+BBox[2])/(2*width), 6))
     BBox[2] = str(round(BBox[2]/width, 6))
-    BBox[1] = str(round(BBox[1]/height,6))
+    BBox[1] = str(round((2*BBox[1]+BBox[3])/(2*height),6))
     BBox[3] = str(round(BBox[3]/height,6))
     return BBox
 
