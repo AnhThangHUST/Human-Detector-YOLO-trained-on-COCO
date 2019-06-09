@@ -24,14 +24,14 @@
 
 # In Action Classification:
 ----
-    Include Action Classification Model 
-    [Link Training Dataset](https://drive.google.com/file/d/1GgJdjlYDKF6RJYlI82pQMgsR1ye7awq6/view?fbclid=IwAR3HqIDXJp4S_a2HfKKPWTEzFxOLQvsho-F5GY_APRbSPfUHAeM0yoo26nc) 
+Include Action Classification Model. 
+Here is [Training Dataset](https://drive.google.com/file/d/1GgJdjlYDKF6RJYlI82pQMgsR1ye7awq6/view?fbclid=IwAR3HqIDXJp4S_a2HfKKPWTEzFxOLQvsho-F5GY_APRbSPfUHAeM0yoo26nc).
 
 
 # Result:
 ----
 * **System Design**
-    <img src="./Images/SystemArchitecture.png" width="600" height="350" /> 
+<img src="./Images/SystemArchitecture.png" width="600" height="350" /> 
 
 <br />
 <br />
